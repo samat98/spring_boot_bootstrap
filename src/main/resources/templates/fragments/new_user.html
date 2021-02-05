@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="menu1" th:fragment="newuser" class="pl-0 pr-0 tab-pane fade border bg-white rounded">
+    <nav class="navbar navbar-default bg-light mr-0 ml-0 border">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand disables text-dark text-style-bold" href="#">Add new user</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-3">
+        <form action="#" th:action="@{admin/adduser}" th:object="${formUser}" method="post" class="ml-auto mr-auto d-flex flex-column justify-content-center align-items-center col-5">
+            <div class="form-group">
+                <label for="fn" class="d-flex justify-content-center font-weight-bold">firstName</label>
+                <input type="text" th:field="*{firstname}" class="form-control" id="fn" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="ln" class="d-flex justify-content-center font-weight-bold">lastname</label>
+                <input type="text" th:field="*{lastname}" class="form-control" id="ln" placeholder="Enter last name">
+            </div>
+            <div class="form-group">
+                <label for="age" class="d-flex justify-content-center font-weight-bold">age</label>
+                <input type="number" th:field="*{age}" class="form-control" id="age" placeholder="Enter age">
+            </div>
+            <div class="form-group">
+                <label for="email" class="d-flex justify-content-center font-weight-bold">Email</label>
+                <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="pwd" class="d-flex justify-content-center font-weight-bold">Password</label>
+                <input type="password" th:field="*{password}" class="form-control" id="pwd" placeholder="Enter password">
+            </div>
+
+            <div class="form-group">
+                <label for="sel2" class="d-flex justify-content-center font-weight-bold">Role</label>
+                <select multiple class="form-control" style="width:250px" id="sel2" size="2" name="authorities">
+                    <option
+                            th:each="role : ${allRoles}"
+                            th:text="${role.name}"
+                            th:value="${role.id}">
+                    </option>
+                </select>
+            </div>
+            <button type="submit" class="d-flex justify-content-center btn btn-success">Add new user</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

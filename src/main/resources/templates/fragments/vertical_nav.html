@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:fragment="verticalnav(isAdminPage)" class="col-sm-2 p-0 mt-2">
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a class="nav-link" th:classappend="${isAdminPage} == 'a' ? 'active' : ''" href="/admin/">Admin</a>
+            </li>
+            <li class="nav-item" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
+                <a class="nav-link" th:classappend="${isAdminPage} == 'u' ? 'active' : ''" href="/user/">User</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
